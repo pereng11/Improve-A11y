@@ -180,4 +180,16 @@ export const naverStyles = css`
     --color-solid-placeholder: rgba(178, 178, 178, 0.15);
     --color-grey600: #999;
   }
+
+  *:focus-visible {
+    outline: -webkit-focus-ring-color auto 1px;
+    outline-offset: 2px;
+  }
+
+  button {
+    border: 0;
+    background: rgba(0, 0, 0, 0);
+    outline: none;
+    cursor: pointer;
+  }
 `;
