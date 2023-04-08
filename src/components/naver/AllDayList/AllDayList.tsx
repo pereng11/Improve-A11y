@@ -45,7 +45,8 @@ function Before({ styles, categories, changeCategory, currentDay }: Template) {
             <li key={day} css={styles.day}>
               <h3 css={styles.dayTitle}>{day}</h3>
               <ol css={styles.webtoonList}>
-                {webtoonList.map(({ title, thumbnail }) => (
+                {/* chromatic 빌드 에러로 인한 사이즈 조절 */}
+                {webtoonList.slice(0, 70).map(({ title, thumbnail }) => (
                   <li key={title} css={styles.webtoon}>
                     <a href="#" css={styles.imgBox}>
                       <img src={thumbnail} />
@@ -114,7 +115,8 @@ function Improved({
                 {day}
               </Title>
               <List as="ol" direction="col" nested css={styles.webtoonList}>
-                {webtoonList.map(({ title, thumbnail }) => (
+                {/* chromatic 빌드 에러로 인한 사이즈 조절 */}
+                {webtoonList.slice(0, 70).map(({ title, thumbnail }) => (
                   <ListItem key={title} css={styles.webtoon}>
                     <a href="#" css={styles.imgBox}>
                       <img src={thumbnail} />
