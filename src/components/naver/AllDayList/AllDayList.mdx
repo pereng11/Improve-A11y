@@ -8,6 +8,10 @@ import { Meta } from "@storybook/blocks";
       padding: 20px 0 50px;
     }
 
+    .section-result{
+      margin-top: 60px;
+    }
+
     .list{
       list-style: none;
       padding: 0;
@@ -43,63 +47,96 @@ import { Meta } from "@storybook/blocks";
 </style>
 
 <h1>요일별 웹툰보기 영역 개선</h1>
-
 <div className="thumbnail">
   <img width="800px" src="/naver_all_day.gif" />
 </div>
-
-<h2>개선 방법</h2>
-<p>
-  계층 내 이동을 방향키로, 계층 간 이동을 탭으로 하도록 구현함으로써 키보드
-  탐색의 접근성과 사용성을 개선하였습니다.
-</p>
-<p>
-  키보드 탐색에 소요되는 이동 횟수를 기존 O(N*M)에서 O(N+M)으로 대폭
-  감소시켰습니다(N: 목록 개수, M: 목록 내 아이템 개수).
-</p>
-
-<h2>개선 결과</h2>
-<p>
-  2023.04.06 기준 작품 개수는 총 586개로 각 작품마다 2개의 포커스 가능 요소를
-  가지고 있습니다. 그에 따른 각 예시 상황에 대한 이동 횟수 변화는 다음과
-  같습니다.
-</p>
-
-<ul className="list">
-  <li>
-    <h3 className="li-title">
-      일요일 마지막 작품까지 도달하는 데 필요한 이동 횟수
-    </h3>
-    <span>
-      기존: <span className="before">1172회</span> (앞선 모든 작품 탐색 필요)
-    </span>
-    <span>
-      개선: <span className="improved">2회</span> (ctrl+end로 마지막 요소로 이동
-      -> 내부로 진입)
-    </span>
-  </li>
-  <li>
-    <h3 className="li-title">
-      수요일 가운데 작품까지 도달하는 데 필요한 이동 횟수
-    </h3>
-    <span>
-      기존: <span className="before">420회</span> (앞선 모든 작품 탐색 필요)
-    </span>
-    <span>
-      개선: <span className="improved">13회</span>(요일 이동 -> pageDown이용하여
-      5칸씩 이동 -> 내부로 진입)
-    </span>
-  </li>
-  <li>
-    <h3 className="li-title">
-      요일별 웹툰보기를 빠져나가는 데 필요한 이동 횟수
-    </h3>
-    <span>
-      기존: <span className="before">1173회</span> (앞선 모든 작품 탐색 필요)
-    </span>
-    <span>
-      개선: <span className="improved">4회</span> (요일 진입 -> 내부 포커스 요소
-      2개 탐색 -> 빠져나감)
-    </span>
-  </li>
-</ul>
+<section className="section-method">
+  <h2>개선 방법</h2>
+  <p>
+    계층 내 이동을 방향키로, 계층 간 이동을 탭으로 하도록 구현함으로써 키보드
+    탐색의 접근성과 사용성을 개선하였습니다.
+  </p>
+  <p>
+    키보드 탐색에 소요되는 이동 횟수를 기존 O(N*M)에서 O(N+M)으로 대폭
+    감소시켰습니다(N: 목록 개수, M: 목록 내 아이템 개수).
+  </p>
+  <p>
+    키보드 네비게이션은 WCAG의 키보드 네비게이션 지침을 기준으로 적용하였으며,
+    Improved 스토리에서 직접 확인해보실 수 있습니다.
+  </p>
+  <p>키 설명</p>
+  <ul>
+    <li>
+      Tab: 다음 계층으로 포커스 이동. 현재 포커스된 요소가 컴포넌트의 마지막
+      계층일 경우 컴포넌트 바깥으로 탈출
+    </li>
+    <li>
+      Shift+Tab: 이전 계층으로 포커스 이동. 현재 포커스된 요소가 컴포넌트의 처음
+      계층일 경우 컴포넌트 바깥으로 탈출
+    </li>
+    <li>
+      ↑/←: 계층 내 이전 요소로 포커스 이동. 현재 포커스된 요소가 계층 내 처음
+      요소일 경우 이동하지 않음.
+    </li>
+    <li>
+      ↓/→: 계층 내 다음 요소로 포커스 이동. 현재 포커스된 요소가 계층 내 마지막
+      요소일 경우 이동하지 않음.
+    </li>
+    <li>Home(macOS의 경우 ⌘+↑/←): 계층 내 첫번째 요소로 포커스 이동</li>
+    <li>End(macOS의 경우 ⌘+↓/→): 계층 내 마지막 요소로 포커스 이동</li>
+    <li>Ctrl+Home: 컴포넌트 내 첫번째 요소로 포커스 이동</li>
+    <li>Ctrl+End: 컴포넌트 내 마지막 요소로 포커스 이동</li>
+    <li>
+      PageUp(macOS의 경우 ⌥+↑/←): 계층 내 지정한 개수만큼 이전 요소로 이동
+    </li>
+    <li>
+      PageDown(macOS의 경우 ⌥+↓/→): 계층 내 지정한 개수만큼 다음 요소로 이동
+    </li>
+  </ul>
+</section>
+<section className="section-result">
+  <h2>개선 결과</h2>
+  <p>
+    2023.04.06 기준 작품 개수는 총 586개로 각 작품마다 2개의 포커스 가능 요소를
+    가지고 있습니다. 그에 따른 각 예시 상황에 대한 이동 횟수 변화는 다음과
+    같습니다.
+  </p>
+  <ul className="list">
+    <li>
+      <h3 className="li-title">
+        일요일 마지막 작품까지 도달하는 데 필요한 이동 횟수
+      </h3>
+      <span>
+        기존: <span className="before">1172회</span> (앞선 모든 작품 탐색 필요)
+      </span>
+      <span>
+        개선: <span className="improved">2회</span> (ctrl+end로 마지막 요소로
+        이동 -> 내부로 진입)
+      </span>
+    </li>
+    <li>
+      <h3 className="li-title">
+        수요일 가운데 작품까지 도달하는 데 필요한 이동 횟수
+      </h3>
+      <span>
+        기존: <span className="before">420회</span> (앞선 모든 작품 탐색 필요)
+      </span>
+      <span>
+        개선: <span className="improved">13회</span>(요일 이동 ->
+        pageDown이용하여 5칸씩 이동 -> 내부로 진입)
+      </span>
+    </li>
+    <li>
+      <h3 className="li-title">
+        요일별 웹툰보기를 빠져나가는 데 필요한 이동 횟수
+      </h3>
+      <span>
+        기존: <span className="before">1173회</span> (앞선 모든 작품 탐색 필요)
+      </span>
+      <span>
+        개선: <span className="improved">4회</span> (요일 진입 -> 내부 포커스
+        요소 2개 탐색 -> 빠져나감)
+      </span>
+    </li>
+  </ul>
+</section>
