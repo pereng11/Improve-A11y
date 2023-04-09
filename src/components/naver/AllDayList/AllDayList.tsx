@@ -49,7 +49,7 @@ function Before({ styles, categories, changeCategory, currentDay }: Template) {
                 {webtoonList.slice(0, 70).map(({ title, thumbnail }) => (
                   <li key={title} css={styles.webtoon}>
                     <a href="#" css={styles.imgBox}>
-                      <img src={thumbnail} />
+                      <img src={thumbnail} alt={title} />
                     </a>
                     <div css={styles.webtoonTitle}>
                       <a href="#">
@@ -90,7 +90,12 @@ function Improved({
         <Title lv={2} css={styles.title}>
           요일별 전체 웹툰
         </Title>
-        <List direction="row" as="ol" css={styles.category}>
+        <List
+          direction="row"
+          as="ol"
+          css={styles.category}
+          aria-orientation={undefined}
+        >
           {categories.map(({ key, text, selected }: Category) => (
             <ListItem key={key}>
               <button
@@ -107,19 +112,30 @@ function Improved({
           ))}
         </List>
       </div>
-      <List as="ol" direction="row" css={styles.dayList}>
+      <List
+        as="ol"
+        direction="row"
+        css={styles.dayList}
+        aria-orientation={undefined}
+      >
         {Object.entries(WEBTOONLIST_BY_DAY).map(
           ([day, webtoonList], dayIdx) => (
             <ListItem key={day} css={styles.day}>
               <Title lv={3} css={styles.dayTitle}>
                 {day}
               </Title>
-              <List as="ol" direction="col" nested css={styles.webtoonList}>
+              <List
+                as="ol"
+                direction="col"
+                nested
+                css={styles.webtoonList}
+                aria-orientation={undefined}
+              >
                 {/* chromatic 빌드 에러로 인한 사이즈 조절 */}
                 {webtoonList.slice(0, 70).map(({ title, thumbnail }) => (
                   <ListItem key={title} css={styles.webtoon}>
                     <a href="#" css={styles.imgBox}>
-                      <img src={thumbnail} />
+                      <img src={thumbnail} alt={title} />
                     </a>
                     <div css={styles.webtoonTitle}>
                       <a href="#">
