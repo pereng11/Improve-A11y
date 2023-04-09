@@ -24,6 +24,20 @@ const config: StorybookConfig = {
           "@": resolve("./src"),
         },
       },
+      build: {
+        rollupOptions: {
+          maxParallelFileOps: 2,
+          cache: false,
+          output: {
+            sourcemap: false,
+            manualChunks: (id) => {
+              if (id.includes("node_modules")) {
+                return "vendor";
+              }
+            },
+          },
+        },
+      },
     });
   },
 };
