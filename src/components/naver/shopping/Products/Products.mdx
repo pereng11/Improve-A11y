@@ -8,6 +8,17 @@ import { Meta } from "@storybook/blocks";
       padding: 20px 0 50px;
     }
 
+    .original-link{
+      text-decoration: underline;
+    }
+    .original-link p{
+      font-size: 20px;
+    }
+
+    .section-method{
+      margin-top: 60px;
+    }
+
     .section-result{
       margin-top: 60px;
     }
@@ -54,6 +65,16 @@ import { Meta } from "@storybook/blocks";
 <div className="thumbnail">
   <img width="800px" src="/naver_shopping_products.gif" />
 </div>
+<section>
+  <h2>원본 사이트</h2>
+  <a
+    className="original-link"
+    target="_blank"
+    href="https://trenditem.shopping.naver.com/"
+  >
+    네이버 쇼핑 메인 페이지
+  </a>
+</section>
 <section className="section-method">
   <h2>개선 방법</h2>
   <>

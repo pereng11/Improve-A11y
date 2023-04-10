@@ -48,11 +48,11 @@ function Before({ styles, categories, changeCategory, currentDay }: Template) {
                 {/* chromatic 빌드 에러로 인한 사이즈 조절 */}
                 {webtoonList.slice(0, 70).map(({ title, thumbnail }) => (
                   <li key={title} css={styles.webtoon}>
-                    <a href="#" css={styles.imgBox}>
+                    <a href="#" css={styles.imgBox} target="_blank">
                       <img src={thumbnail} alt={title} />
                     </a>
                     <div css={styles.webtoonTitle}>
-                      <a href="#">
+                      <a href="#" target="_blank">
                         {dayIdx === currentDay - 1 && <Up />}
                         <span>{title}</span>
                       </a>

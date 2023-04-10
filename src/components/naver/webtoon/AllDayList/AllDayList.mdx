@@ -7,6 +7,17 @@ import { Meta } from "@storybook/blocks";
     .thumbnail{
       padding: 20px 0 50px;
     }
+    
+    .original-link{
+      text-decoration: underline;
+    }
+    .original-link p{
+      font-size: 20px;
+    }
+
+    .section-method{
+      margin-top: 60px;
+    }
 
     .section-result{
       margin-top: 60px;
@@ -50,6 +61,16 @@ import { Meta } from "@storybook/blocks";
 <div className="thumbnail">
   <img width="800px" src="/naver_webtoon_all_day.gif" />
 </div>
+<section>
+  <h2>원본 사이트</h2>
+  <a
+    className="original-link"
+    target="_blank"
+    href="https://comic.naver.com/webtoon"
+  >
+    네이버 웹툰 메인 페이지
+  </a>
+</section>
 <section className="section-method">
   <h2>개선 방법</h2>
   <>

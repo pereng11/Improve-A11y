@@ -67,7 +67,7 @@ function Before({ styles, products }: Template) {
     <ul css={styles.productList}>
       {products.map(({ title, price, img, link, discount, mall }, idx) => (
         <li key={title + idx}>
-          <a href={link}>
+          <a href="#" target="_blank">
             <div css={styles.imgBox}>
               <img width="240" height="240" src={img} alt={title} />
             </div>
@@ -84,7 +84,9 @@ function Before({ styles, products }: Template) {
             <div css={styles.titleBox}>{title}</div>
           </a>
           <div css={styles.mallBox}>
-            <a href={link}>{mall}</a>
+            <a href="#" target="_blank">
+              {mall}
+            </a>
           </div>
         </li>
       ))}
@@ -108,7 +110,7 @@ function Improved({ styles, products }: Template) {
     <Grid container spacing={20} css={customStyles.productList}>
       {products.map(({ title, price, img, link, discount, mall }, idx) => (
         <Grid key={title + idx} item xs={3}>
-          <a href={link}>
+          <a href="#">
             <div css={styles.imgBox}>
               <img width="240" height="240" src={img} alt={title} />
             </div>
@@ -125,7 +127,7 @@ function Improved({ styles, products }: Template) {
             <div css={styles.titleBox}>{title}</div>
           </a>
           <div css={styles.mallBox}>
-            <a href={link}>{mall}</a>
+            <a href="#">{mall}</a>
           </div>
         </Grid>
       ))}
