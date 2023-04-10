@@ -1,1 +1,2 @@
-export * from "./AllDayList";
+export * from "./webtoon";
+export * from "./shopping";
