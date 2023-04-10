@@ -48,23 +48,23 @@ import { Meta } from "@storybook/blocks";
 
 <h1>요일별 웹툰보기 영역 개선</h1>
 <div className="thumbnail">
-  <img width="800px" src="/naver_all_day.gif" />
+  <img width="800px" src="/naver_webtoon_all_day.gif" />
 </div>
 <section className="section-method">
   <h2>개선 방법</h2>
-  <p>
+  <>
     계층 내 이동을 방향키로, 계층 간 이동을 탭으로 하도록 구현함으로써 키보드
     탐색의 접근성과 사용성을 개선하였습니다.
-  </p>
-  <p>
+  </>
+  <>
     키보드 탐색에 소요되는 이동 횟수를 기존 O(N*M)에서 O(N+M)으로 대폭
     감소시켰습니다(N: 목록 개수, M: 목록 내 아이템 개수).
-  </p>
-  <p>
+  </>
+  <>
     키보드 네비게이션은 WCAG의 키보드 네비게이션 지침을 기준으로 적용하였으며,
     Improved 스토리에서 직접 확인해보실 수 있습니다.
-  </p>
-  <p>키 설명</p>
+  </>
+  <>키 설명</>
   <ul>
     <li>
       Tab: 다음 계층으로 포커스 이동. 현재 포커스된 요소가 컴포넌트의 마지막
@@ -96,11 +96,11 @@ import { Meta } from "@storybook/blocks";
 </section>
 <section className="section-result">
   <h2>개선 결과</h2>
-  <p>
+  <>
     2023.04.06 기준 작품 개수는 총 586개로 각 작품마다 2개의 포커스 가능 요소를
     가지고 있습니다. 그에 따른 각 예시 상황에 대한 이동 횟수 변화는 다음과
     같습니다.
-  </p>
+  </>
   <ul className="list">
     <li>
       <h3 className="li-title">

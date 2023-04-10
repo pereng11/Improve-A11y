@@ -107,20 +107,17 @@ export const globalStyles = css`
   a {
     background-color: transparent;
     text-decoration: none;
-    outline: none;
     color: inherit;
     &:active,
     &:hover {
       text-decoration: none;
       color: inherit;
-      outline: 0;
     }
   }
   button {
     display: flex;
     align-items: center;
     justify-content: center;
-    outline: none;
     border: none;
     background: none;
     padding: 0;
@@ -132,7 +129,6 @@ export const globalStyles = css`
     color: inherit;
   }
   input {
-    outline: none;
   }
 `;
 
@@ -189,7 +185,6 @@ export const naverStyles = css`
   button {
     border: 0;
     background: rgba(0, 0, 0, 0);
-    outline: none;
     cursor: pointer;
   }
 `;
